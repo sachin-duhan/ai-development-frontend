@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light navbar-default navbar-fixed-top bg-light">
     <a routerLink="/" class="navbar-brand mx-md-4 mx-2">
         <img src="/assets/bitgrit.png" height="48" alt="bitgrit logo" />
     </a>
@@ -18,12 +18,12 @@
 </nav>
 
 <!--router outler here-->
-<div class="container pt-2">
+<div class="container pt-3" style="min-height: 90vh;">
     <router-outlet></router-outlet>
 </div>
 
 <!--footer here! refrenece taken from bitgrit.net-->
-<footer class="d-md-flex align-items-center container-fluid px-3 px-md-5 mx-md-3 justify-content-between">
+<footer class="d-md-flex align-items-center container-fluid px-3 px-md-5 py-5 shadow bg-light justify-content-between">
     <div class="d-flex justify-content-between">
         <a *ngFor="let item of social_media_links" href="{{item.url}}">
             <img src="{{item.path}}" height="32" class="mx-3" alt="social media icon" />
@@ -33,5 +33,5 @@
         <a *ngFor="let item of navigation_list" [routerLink]="item.url" class="px-3 mx-2 nav-item nav-link btn-link">
       {{item.title | titlecase}}</a>
     </div>
-    <p class="lead text-secondary pr-4">Copyright © bitgrit {{year}}</p>
+    <p class="lead text-secondary pr-4 pt-2">Copyright © bitgrit {{year}}</p>
 </footer>

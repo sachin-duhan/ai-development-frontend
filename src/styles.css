@@ -33,6 +33,10 @@ body {
     color: #5b3e80;
 }
 
+.text-primary {
+    color: #5b3e80;
+}
+
 .btn-primary,
 .btn-primary:hover {
     background-color: #5b3e80;
