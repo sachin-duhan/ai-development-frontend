@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { stringify } from 'querystring';
 
 @Component({
     selector: 'app-candidate',
@@ -7,11 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class CandidateComponent implements OnInit {
-    constructor() { }
+    constructor(private router: Router) { }
     selected_resume: File = undefined;
     show_preview: boolean = false;
+    hide: boolean = false;
     error_msg: Array<string> = [];
-    ngOnInit() { }
+    job_recommendation: Array<Job> = []
+
+    ngOnInit() {
+    }
 
     onFileSelected($event) {
         this.error_msg = [];
@@ -29,10 +35,19 @@ export class CandidateComponent implements OnInit {
         } else this.show_preview = true;
     }
 
+    navigateTo(id: string) {
+        this.router.navigate(['/interview', id]);
+    }
+
     upload_resume(): void {
         this.error_msg = [];
         if (!this.selected_resume) { this.error_msg.push("Kindly select a Resume."); return; }
-        // write a service for upload resume and fetching data back!
-        window.alert("backend integeration required!");
+        this.job_recommendation = [
+            { title: "Data Scientist", _id: "1", description: "requirement for a Data Scientist", image: "https://d1jnx9ba8s6j9r.cloudfront.net/imgver.1551437392/img/co_img_338_1501838305.png", },
+            { title: "Data Scientist", _id: "2", description: "requirement for a Data Scientist", image: "https://5.imimg.com/data5/DL/VM/MY-26200765/data-science-training-500x500.png", },
+            { title: "Machine Learing Engineer", _id: "3", description: "requirement for a Data Scientist", image: "https://i.dlpng.com/static/png/6349351_preview.png", },
+        ]
     }
 }
+
+interface Job { title: string, description: string, image: string, _id: string }

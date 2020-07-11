@@ -6,7 +6,7 @@ const routes: Routes = [
     { path: 'candidate', loadChildren: () => import('./candidate/candidate.module').then(m => m.CandidateModule) },
     { path: 'manager', loadChildren: () => import('./program-manager/program-manager.module').then(m => m.ProgramManagerModule) },
     { path: 'evaluate', loadChildren: () => import('./evaluation/evaluation.module').then(m => m.EvaluationModule) },
-    { path: 'interview', loadChildren: () => import('./questions-inteface/questions-inteface.module').then(m => m.QuestionsIntefaceModule) },
+    { path: 'interview/:id', loadChildren: () => import('./questions-inteface/questions-inteface.module').then(m => m.QuestionsIntefaceModule) },
     { path: '**', redirectTo: 'candidate', pathMatch: 'full' }
 ];
 

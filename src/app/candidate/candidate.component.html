@@ -7,16 +7,15 @@
   </button>
     <strong class="pr-2">OOPS! </strong> {{item}}
 </div>
-
 <br>
+
 <div class="row">
     <div class="col-sm-12 col-md-5">
         <input (change)="onFileSelected($event)" class="border w-100 rounded-lg p-3 pointer" required type="file" id="file">
         <button (click)="upload_resume()" class="btn btn-block btn-primary border-0 rounded-0 mt-3">Upload</button>
-        <div class="w-100 mt-3">
+        <div class="w-100 mt-3" *ngIf="!hide">
             <div class="bg-light p-3 mb-3">
                 <h6 class="text-secondary">Contact Details</h6>
-
             </div>
             <div class="bg-light p-3 mb-3">
                 <h6 class="text-secondary">Education Details</h6>
@@ -28,13 +27,47 @@
             </div>
         </div>
     </div>
+    <!--resume preview here!-->
     <div class="col-sm-12 col-md-7 d-none d-md-block">
-        <p class="lead text-secondary">
-            <strong>{{show_preview && selected_resume ? "Preview of your Resume" : ""}}</strong>
-        </p>
+        <div class="lead text-secondary" *ngIf="show_preview">
+            <strong>{{show_preview && selected_resume && !hide ? "Preview of your Resume" : "Resume Analysis"}}</strong>
+            <div class="float-right">
+                <input type="checkbox" [(ngModel)]="hide">
+                <span style="font-size: 15px" class="pl-2">Hide Preview</span>
+            </div>
+        </div>
+        <br>
         <div class="d-flex justify-content-center pl-2">
             <img src="/assets/no_file.svg" class="img-fluid w-50" *ngIf="!show_preview || !selected_resume" alt="no file input given" />
-            <pdf-viewer *ngIf="show_preview" [src]="selected_resume" [render-text]="true" [zoom]="0.75" style="display: block;"></pdf-viewer>
+            <pdf-viewer *ngIf="show_preview && !hide" [src]="selected_resume" [render-text]="true" [zoom]="0.75" style="display: block;"></pdf-viewer>
+            <div class="w-100 mt-3" *ngIf="hide">
+                <div class="bg-light p-3 mb-3">
+                    <h6 class="text-secondary">Contact Details</h6>
+                </div>
+                <div class="bg-light p-3 mb-3">
+                    <h6 class="text-secondary">Education Details</h6>
+
+                </div>
+                <div class="bg-light p-3 mb-3">
+                    <h6 class="text-secondary">Skills</h6>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--post recommendations-->
+<div class="row mb-4 mt-3" *ngIf="job_recommendation.length > 0">
+    <h6 class="text-secondary">Job Recommendations</h6>
+    <div *ngFor="let item of job_recommendation" class="col-sm-12 col-md-4 p-4">
+        <div class="card w-100 rounded-0 border-0">
+            <img class="card-img-top" src="{{item.image}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.description}}</p>
+                <button class="btn btn-link btn-block" (click)="navigateTo(item._id)">Apply for Job</button>
+            </div>
         </div>
     </div>
 </div>
