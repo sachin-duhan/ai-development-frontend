@@ -1,24 +1,26 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-default navbar-fixed-top bg-light">
-    <a routerLink="/" class="navbar-brand mx-md-4 mx-2">
-        <img src="/assets/bitgrit.png" height="48" alt="bitgrit logo" />
-    </a>
-    <button type="button" class="navbar-toggler outline-0 border-0 mr-2 ml-md-0" data-toggle="collapse" data-target="#navbarCollapse">
-    <!--icon for the navbar-->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="20px" height="20px">
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-    </svg>
-  </button>
-
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ml-auto mr-md-4">
-            <a *ngFor="let item of navigation_list" [routerLink]="item.url" routerLinkActive="active" class="px-3 nav-item nav-link">{{item.title | titlecase}}</a>
+<nav class="navbar navbar-expand-sm navbar-light navbar-default navbar-fixed-top bg-light">
+    <div class="container">
+        <a routerLink="/" class="navbar-brand">
+            <img src="/assets/bitgrit.png" height="42" alt="bitgrit logo" />
+        </a>
+        <!--icon for the navbar-->
+        <button type="button" class="navbar-toggler outline-0 border-0" data-toggle="collapse" data-target="#navbarCollapse">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="24px" height="24px">
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+      </svg>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ml-auto">
+                <a *ngFor="let item of navigation_list" [routerLink]="item.url" routerLinkActive="active" class="px-lg-4 px-2 nav-item nav-link">{{item.title | titlecase}}</a>
+            </div>
         </div>
     </div>
 </nav>
 
 <!--router outler here-->
-<div class="container pt-3" style="min-height: 90vh;">
+<div class="container mt-3" style="min-height: 90vh;">
+    <br><br><br><br>
     <router-outlet></router-outlet>
 </div>
 
@@ -33,5 +35,5 @@
         <a *ngFor="let item of navigation_list" [routerLink]="item.url" class="px-3 mx-2 nav-item nav-link btn-link">
       {{item.title | titlecase}}</a>
     </div>
-    <p class="lead text-secondary pr-4 pt-2">Copyright © bitgrit {{year}}</p>
+    <p class="lead text-secondary pr-4 pt-2">Copyright © <strong>bitgrit</strong> {{year}}</p>
 </footer>

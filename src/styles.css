@@ -8,6 +8,14 @@ body {
     overflow-x: hidden;
 }
 
+*:active,
+*:hover,
+*:focus {
+    border: 0;
+    box-shadow: none;
+    outline: none;
+}
+
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -38,9 +46,13 @@ body {
 }
 
 .btn-primary,
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
     background-color: #5b3e80;
     color: #fff;
+    outline: none;
+    box-shadow: none;
 }
 
 strong {
