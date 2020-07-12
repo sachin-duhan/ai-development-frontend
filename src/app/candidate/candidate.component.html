@@ -58,10 +58,10 @@
 </div>
 
 <!--post recommendations-->
-<div class="row mb-4 mt-3" *ngIf="job_recommendation.length > 0">
+<div class="row mt-3" *ngIf="job_recommendation.length > 0">
     <h6 class="text-secondary">Job Recommendations</h6>
     <div *ngFor="let item of job_recommendation" class="col-sm-12 col-md-4 p-4">
-        <div class="card w-100 rounded-0 border-0">
+        <div class="card w-100 rounded-0 border-0 shadow">
             <img class="card-img-top" src="{{item.image}}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{item.title}}</h5>

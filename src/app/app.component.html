@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light navbar-default navbar-fixed-top bg-light">
+<nav class="navbar navbar-expand-sm navbar-light navbar-default navbar-fixed-top bg-white">
     <div class="container">
         <a routerLink="/" class="navbar-brand">
             <img src="/assets/bitgrit.png" height="42" alt="bitgrit logo" />
@@ -23,9 +23,9 @@
     <br><br><br><br>
     <router-outlet></router-outlet>
 </div>
-
+<br>
 <!--footer here! refrenece taken from bitgrit.net-->
-<footer class="d-md-flex align-items-center container-fluid px-3 px-md-5 py-5 shadow bg-light justify-content-between">
+<footer class="d-md-flex align-items-center container-fluid mt-5 px-3 px-md-5 py-5 bg-white justify-content-between">
     <div class="d-flex justify-content-between">
         <a *ngFor="let item of social_media_links" href="{{item.url}}">
             <img src="{{item.path}}" height="32" class="mx-3" alt="social media icon" />

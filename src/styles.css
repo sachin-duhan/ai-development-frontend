@@ -8,10 +8,11 @@ body {
     overflow-x: hidden;
 }
 
+*,
 *:active,
 *:hover,
 *:focus {
-    border: 0;
+    /* border: 0; */
     box-shadow: none;
     outline: none;
 }
@@ -41,7 +42,7 @@ body {
     color: #5b3e80;
 }
 
-.text-primary {
+.text-main {
     color: #5b3e80;
 }
 

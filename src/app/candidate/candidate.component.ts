@@ -45,7 +45,7 @@ export class CandidateComponent implements OnInit {
         this.job_recommendation = [
             { title: "Data Scientist", _id: "1", description: "requirement for a Data Scientist", image: "https://d1jnx9ba8s6j9r.cloudfront.net/imgver.1551437392/img/co_img_338_1501838305.png", },
             { title: "Data Scientist", _id: "2", description: "requirement for a Data Scientist", image: "https://5.imimg.com/data5/DL/VM/MY-26200765/data-science-training-500x500.png", },
-            { title: "Machine Learing Engineer", _id: "3", description: "requirement for a Data Scientist", image: "https://i.dlpng.com/static/png/6349351_preview.png", },
+            { title: "Machine Learing Engineer", _id: "3", description: "requirement for a Data Scientist", image: "https://online.stanford.edu/sites/default/files/styles/figure_default/public/2018-03/reinforcement-learning_cs234-original.jpg?itok=NDm4Wy0q", },
         ]
     }
 }
