@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 declare var MediaRecorder: any;
 
 @Component({
@@ -6,11 +7,12 @@ declare var MediaRecorder: any;
     templateUrl: './video-recorder.component.html'
 })
 
-export class VideoRecorderComponent {
+export class VideoRecorderComponent implements OnInit {
 
     @Input() job_name: string = "";
-    @Input() question: { question: string, id: string };
+    @Input() question: Observable<Question>;
 
+    public myQuestion: Question;
     public constraints = { "video": { width: { max: 320 } }, "audio": true };
     public theStream: MediaStream;
     public theRecorder;
@@ -19,8 +21,12 @@ export class VideoRecorderComponent {
     public is_video_playing: boolean = false;
     public is_video_submitted: boolean = false;
 
+    ngOnInit() {
+        this.question.subscribe(question => { this.myQuestion = question; this.reset() });
+    }
+
     start_recording() {
-        if(this.is_video_submitted) return;
+        if (this.is_video_submitted) return;
         navigator.mediaDevices.getUserMedia(this.constraints)
             .then(stream => this.video_recording_callback(stream))
             .catch(e => {
@@ -67,6 +73,16 @@ export class VideoRecorderComponent {
         a.click();
         setTimeout(function () { URL.revokeObjectURL(url); }, 100);
         this.is_video_submitted = true;
+
     }
 
+    reset() {
+        this.is_video_playing = false;
+        this.is_video_submitted = false;
+        this.recordedChunks = [];
+        this.theRecorder = undefined;
+        this.theStream = null;
+    }
 }
+
+interface Question { question: string, id: string }

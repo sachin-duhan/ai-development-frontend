@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-questions-inteface',
@@ -10,7 +11,10 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class QuestionsIntefaceComponent implements OnInit {
 
     public job_id: string;
-    public active_question: Question ;
+    public active_question: Question;
+
+    constructor(private activatedRoute: ActivatedRoute) { }
+
     questions_list: Array<Question> = [
         { id: "1", question: 'Hello, Kindly introduce yourself.' },
         { id: "2", question: 'Tell me something about your experience.' },
@@ -18,11 +22,22 @@ export class QuestionsIntefaceComponent implements OnInit {
         { id: "4", question: 'Why should we select you?' },
     ]
 
-    constructor(private activatedRoute: ActivatedRoute) { }
+    public shared_question: BehaviorSubject<Question> = new BehaviorSubject(this.questions_list[0]);
+
+
     ngOnInit() {
         this.active_question = this.questions_list[0];
         this.activatedRoute.params
             .subscribe((params: Params) => this.job_id = params.id ? params.id : "1");
+    }
+
+    update_question(item: Question) {
+        this.active_question = item;
+        this.shared_question.next(item);
+    }
+
+    ngOnDestroy() {
+        this.shared_question.unsubscribe();
     }
 
 }

@@ -1,5 +1,5 @@
 <div class="p-5 d-flex bg-white flex-column align-items-center justify-content-center shadow mb-3" *ngIf="!is_video_playing || is_video_submitted">
-    <p class="lead"><strong class="pr-2">Question - </strong> {{question.question}}</p>
+    <p class="lead"><strong class="pr-2">Question - </strong> {{myQuestion.question}}</p>
     <img height="70px" width="70px" (click)="start_recording()" src="/assets/video.svg" class="img-fluid m-5 pointer" *ngIf="!is_video_playing" />
     <img height="70px" width="70px" src="/assets/success.svg" class="img-fluid m-5 pointer" *ngIf="is_video_submitted" />
     <button (click)="start_recording()" class="border-0 rounded-0 btn btn-link text-secondary mb-5 text-decoration-none">{{ is_video_submitted ? "Congratulations, answer submitted Successfully" : "Start recording Answer"}}</button>
