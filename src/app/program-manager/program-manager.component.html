@@ -1,1 +1,17 @@
-<h3>Program Manager Interface</h3>
+<h5 class="text-muted mb-3"> Intrested candidate</h5>
+<div class="row">
+    <div class="col-sm-12 col-md-4 px-3" *ngFor="let item of intrested_candidate">
+        <div class="bg-white shadow-sm">
+            <div class="gradient text-white p-4">
+                <h5 class="m-0">{{item.name | titlecase}} </h5>
+                <div class="p-2 rounded-circle float-right shadow bg-white" style="height:40px; width: 40px;"></div>
+            </div>
+            <div class="px-4 py-3">
+                <p>{{item.bio}}</p>
+                <strong class="pr-2">Skills : </strong>
+                <span *ngFor="let skill of item.skills" class="badge text-muted border m-1">{{skill.title}}</span>
+                <!-- <button class="btn btn-link btn-block" (change)="update_selected_list(item)">Select candidate </button> -->
+            </div>
+        </div>
+    </div>
+</div>

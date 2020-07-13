@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
         { url: 'candidate', title: 'Candidate' },
         { url: 'interview/1', title: 'Interview' },
         { url: 'manager', title: 'Manager' },
-        { url: 'evaluate', title: 'Results' },
+        { url: 'evaluate', title: 'Evaluation' },
     ];
 
     // footer social media icon!

@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { Question } from '../@types/type';
 
 @Component({
     selector: 'app-questions-inteface',
-    templateUrl: './questions-inteface.component.html',
-    styleUrls: ['./questions-inteface.component.css']
+    templateUrl: './questions-inteface.component.html'
 })
 
 export class QuestionsIntefaceComponent implements OnInit {
@@ -39,7 +39,4 @@ export class QuestionsIntefaceComponent implements OnInit {
     ngOnDestroy() {
         this.shared_question.unsubscribe();
     }
-
 }
-
-interface Question { id: string, question: string };

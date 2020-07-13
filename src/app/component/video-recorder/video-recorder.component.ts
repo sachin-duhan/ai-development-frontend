@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Question } from '../../@types/type';
+
 declare var MediaRecorder: any;
 
 @Component({
@@ -84,5 +86,3 @@ export class VideoRecorderComponent implements OnInit {
         this.theStream = null;
     }
 }
-
-interface Question { question: string, id: string }
