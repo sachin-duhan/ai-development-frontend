@@ -14,7 +14,7 @@ export class ProgramManagerComponent implements OnInit {
 
     ngOnInit() { }
 
-    filter: Array<Technology> = [
+    filters: Array<Technology> = [
         { title: 'Python' },
         { title: 'Data Science' },
         { title: 'Machine Learning' },

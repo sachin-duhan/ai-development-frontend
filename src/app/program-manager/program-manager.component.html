@@ -1,3 +1,16 @@
+<h5 class="text-muted">Available Positions</h5>
+<div class="row">
+    <div class="col-sm-12 col-md-4 p-2">
+        <div class="d-flex align-items-center pl-3" *ngFor="let item of filters">
+            <input type="checkbox">
+            <h6 class="pl-3 pt-2">{{item.title}}</h6>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-8 p-2">
+
+    </div>
+</div>
+<br>
 <h5 class="text-muted mb-3"> Intrested candidate</h5>
 <div class="row">
     <div class="col-sm-12 col-md-4 px-3" *ngFor="let item of intrested_candidate">
