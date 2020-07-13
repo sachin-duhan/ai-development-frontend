@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+
+import * as _backend from '../@data/main';
 import { Question } from '../@types/type';
 
 @Component({
@@ -12,18 +14,10 @@ export class QuestionsIntefaceComponent implements OnInit {
 
     public job_id: string;
     public active_question: Question;
+    questions_list: Array<Question> = _backend.questions_list;
 
     constructor(private activatedRoute: ActivatedRoute) { }
-
-    questions_list: Array<Question> = [
-        { id: "1", question: 'Hello, Kindly introduce yourself.' },
-        { id: "2", question: 'Tell me something about your experience.' },
-        { id: "3", question: 'How will you cop-up with stress and job life balance?' },
-        { id: "4", question: 'Why should we select you?' },
-    ]
-
     public shared_question: BehaviorSubject<Question> = new BehaviorSubject(this.questions_list[0]);
-
 
     ngOnInit() {
         this.active_question = this.questions_list[0];
