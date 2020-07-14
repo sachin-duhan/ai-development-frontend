@@ -8,6 +8,11 @@ body {
     overflow-x: hidden;
 }
 
+:host {
+    padding: 64px 32px;
+    display: block;
+}
+
 *,
 *:active,
 *:hover,

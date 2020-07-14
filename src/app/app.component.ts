@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
 
     // used in footer for copyright year display!
     year = new Date().getFullYear();
-    
+
     constructor(private router: Router) { }
     ngOnInit() {
         // used for navigate to top on route chnage or navigate!

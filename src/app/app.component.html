@@ -1,18 +1,21 @@
 <nav class="navbar navbar-expand-sm navbar-light navbar-default navbar-fixed-top bg-white">
+    <ngx-loading-bar [color]="'#5b3e80'" [height]="2" [includeSpinner]="false"></ngx-loading-bar>
     <div class="container">
         <a routerLink="/" class="navbar-brand">
             <img src="/assets/bitgrit.png" height="42" alt="bitgrit logo" />
         </a>
         <!--icon for the navbar-->
         <button type="button" class="navbar-toggler outline-0 border-0" data-toggle="collapse" data-target="#navbarCollapse">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="24px" height="24px">
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-      </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="24px" height="24px">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
     </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ml-auto">
-                <a *ngFor="let item of navigation_list" [routerLink]="item.url" routerLinkActive="active" class="px-lg-4 px-2 nav-item nav-link">{{item.title | titlecase}}</a>
+                <a *ngFor="let item of navigation_list" [routerLink]="item.url" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="px-lg-4 px-2 nav-item nav-link">
+          {{item.title | titlecase}}
+        </a>
             </div>
         </div>
     </div>
@@ -31,7 +34,7 @@
             <img src="{{item.path}}" height="32" class="mx-3" alt="social media icon" />
         </a>
     </div>
-    <div class="d-md-flex justify-content-between">
+    <div class="d-md-flex justify-content-between mt-3 mt-md-0">
         <a *ngFor="let item of navigation_list" [routerLink]="item.url" class="px-3 mx-2 nav-item nav-link btn-link">
       {{item.title | titlecase}}</a>
     </div>
