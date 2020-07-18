@@ -43,6 +43,7 @@ export class VideoRecorderComponent implements OnInit {
         video.srcObject = stream;
         let recorder;
         try {
+            // media recorder cannot record video in mp4 format!!
             recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
         } catch (e) {
             console.error('Exception while creating MediaRecorder: ' + e);
@@ -66,12 +67,12 @@ export class VideoRecorderComponent implements OnInit {
             this.theRecorder.stop();
             this.theStream.getTracks().forEach(track => { track.stop(); });
         }
-        var blob = new Blob(this.recordedChunks, { type: "video/webm" });
+        var blob = new Blob(this.recordedChunks, { type: "video/mp4" });
         var url = URL.createObjectURL(blob);
         var a = window.document.createElement("a");
         document.body.appendChild(a);
         a.href = url;
-        a.download = `${this.job_name}.webm`;
+        a.download = `${this.job_name}.mp4`;
         a.click();
         setTimeout(function () { URL.revokeObjectURL(url); }, 100);
         this.is_video_submitted = true;

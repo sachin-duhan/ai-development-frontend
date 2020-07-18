@@ -80,3 +80,11 @@ strong {
 #hover_shadow:hover {
     box-shadow: 0 1px 25px rgba(0, 0, 0, 0.1);
 }
+
+
+/* To flip the camera horizontally! */
+
+video {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
