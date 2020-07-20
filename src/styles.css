@@ -88,3 +88,60 @@ video {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }
+
+
+/*recoding animation*/
+
+.animation-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+@keyframes ripple1 {
+    from {
+        opacity: 1;
+        border: 8px solid rgba(0, 0, 0, 0.2);
+        transform: scale3d(0.75, 0.75, 1);
+    }
+    to {
+        opacity: 0;
+        border: 2px solid rgba(0, 0, 0, 0.15);
+        transform: scale3d(1.5, 1.5, 1);
+    }
+}
+
+.recording-animation::after,
+.recording-animation::before {
+    opacity: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    content: '';
+    height: 100%;
+    width: 100%;
+    border: 8px solid rgba(0, 0, 0, 0.2);
+    border-radius: 100%;
+    animation-name: ripple1;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.65, 0, 0.34, 1);
+    z-index: -1;
+}
+
+.recording-animation::after {
+    animation-duration: 1s;
+}
+
+.recording-animation::before {
+    animation-duration: 2s;
+}

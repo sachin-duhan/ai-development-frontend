@@ -15,7 +15,8 @@ export class VideoRecorderComponent implements OnInit {
     @Input() question: Observable<Question>;
 
     public myQuestion: Question;
-    public constraints = { "video": { width: { max: 320 } }, "audio": true };
+    // public constraints = { "video": { width: { max: 320 } }, "audio": true }; // for video
+    public constraints = { "video": false, "audio": true };
     public theStream: MediaStream;
     public theRecorder;
     public recordedChunks = [];
@@ -29,7 +30,8 @@ export class VideoRecorderComponent implements OnInit {
 
     start_recording() {
         if (this.is_video_submitted) return;
-        navigator.mediaDevices.getUserMedia(this.constraints)
+        let a = window.confirm("Kindly mute your laptop, else you may witness some reverberation noise");
+        if (a) navigator.mediaDevices.getUserMedia(this.constraints)
             .then(stream => this.video_recording_callback(stream))
             .catch(e => {
                 console.error('getUserMedia() failed: ' + e);
@@ -44,7 +46,8 @@ export class VideoRecorderComponent implements OnInit {
         let recorder;
         try {
             // media recorder cannot record video in mp4 format!!
-            recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
+            // recorder = new MediaRecorder(stream, { mimeType: "video/webm" }); // for video
+            recorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
         } catch (e) {
             console.error('Exception while creating MediaRecorder: ' + e);
             window.alert('oops! something went wrong.');
@@ -57,22 +60,19 @@ export class VideoRecorderComponent implements OnInit {
         this.is_video_playing = true;
     }
 
-    stop() {
-        this.theRecorder.stop();
-        this.theStream.getTracks().forEach(track => { track.stop(); });
-    }
-
     download() {
         if (this.theRecorder.state == 'recording') {
             this.theRecorder.stop();
             this.theStream.getTracks().forEach(track => { track.stop(); });
         }
-        var blob = new Blob(this.recordedChunks, { type: "video/mp4" });
+        // var blob = new Blob(this.recordedChunks, { type: "video/mp4" }); // for video
+        var blob = new Blob(this.recordedChunks, { type: "audio/wav" });
         var url = URL.createObjectURL(blob);
         var a = window.document.createElement("a");
         document.body.appendChild(a);
         a.href = url;
-        a.download = `${this.job_name}.mp4`;
+        // a.download = `${this.job_name}.mp4`; // for video
+        a.download = `${this.job_name}.wav`;
         a.click();
         setTimeout(function () { URL.revokeObjectURL(url); }, 100);
         this.is_video_submitted = true;

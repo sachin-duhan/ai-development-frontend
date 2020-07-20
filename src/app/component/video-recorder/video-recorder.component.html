@@ -5,9 +5,16 @@
     <button (click)="start_recording()" class="border-0 rounded-0 btn btn-link text-secondary mb-5 text-decoration-none">{{ is_video_submitted ? "Congratulations, answer submitted Successfully" : "Start recording Answer"}}</button>
 </div>
 
-<video id="video " [class.d-none]="!is_video_playing" *ngIf="!is_video_submitted" width="100% " height="100% " autoplay muted></video>
+<video id="video" class="d-none" width="100% " height="100% " autoplay muted></video>
+
+<div class="p-5 d-flex flex-column align-items-center justify-content-center mb-3" *ngIf="!is_video_submitted && is_video_playing">
+    <div class="animation-container" [class.recording-animation]="is_video_playing">
+        <img height="70px" width="70px" src="/assets/mice.svg" class="img-fluid m-1 pl-1 pointer" />
+    </div>
+    <h6 class="text-muted my-3 p-3">{{is_video_playing ? "Recording..." : "Start Recording"}}</h6>
+</div>
+
 <br>
 <div class="row" *ngIf="!is_video_submitted">
-    <button (click)="stop() " class="border-0 rounded-0 btn btn-link col-sm-6 text-decoration-none">Stop Recording</button>
-    <button (click)="download() " class="border-0 rounded-0 btn btn-primary col-sm-6">Submit Answer</button>
+    <button (click)="download() " class="border-0 rounded-0 btn offset-md-6 btn-primary col-sm-6">Submit Answer</button>
 </div>
