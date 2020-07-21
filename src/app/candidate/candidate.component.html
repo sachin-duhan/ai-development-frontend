@@ -12,16 +12,17 @@
 <div class="row">
     <div class="col-sm-12 col-md-5">
         <input (change)="onFileSelected($event)" class="border w-100 rounded-lg p-3 pointer" required type="file" id="file">
-        <button (click)="upload_resume()" class="btn btn-block btn-primary border-0 rounded-0 mt-3">Upload</button>
+        <button (click)="upload_resume()" class="btn btn-block btn-primary border-0 rounded-0 mt-3" [disabled]="loading">{{loading ? "Loading..." : "Upload"}}</button>
         <div class="w-100 mt-3" *ngIf="!hide">
-            <div class="bg-light p-3 mb-3">
+            <div class="bg-white p-3 mb-3">
                 <h6 class="text-secondary">Contact Details</h6>
+
             </div>
-            <div class="bg-light p-3 mb-3">
+            <div class="bg-white p-3 mb-3">
                 <h6 class="text-secondary">Education Details</h6>
 
             </div>
-            <div class="bg-light p-3 mb-3">
+            <div class="bg-white p-3 mb-3">
                 <h6 class="text-secondary">Skills</h6>
 
             </div>
@@ -41,14 +42,14 @@
             <img src="/assets/no_file.svg" class="img-fluid w-50" *ngIf="!show_preview || !selected_resume" alt="no file input given" />
             <pdf-viewer *ngIf="show_preview && !hide" [src]="selected_resume" [render-text]="true" [zoom]="0.75" style="display: block;"></pdf-viewer>
             <div class="w-100 mt-3" *ngIf="hide">
-                <div class="bg-light p-3 mb-3">
+                <div class="bg-white p-3 mb-3">
                     <h6 class="text-secondary">Contact Details</h6>
                 </div>
-                <div class="bg-light p-3 mb-3">
+                <div class="bg-white p-3 mb-3">
                     <h6 class="text-secondary">Education Details</h6>
 
                 </div>
-                <div class="bg-light p-3 mb-3">
+                <div class="bg-white p-3 mb-3">
                     <h6 class="text-secondary">Skills</h6>
 
                 </div>
