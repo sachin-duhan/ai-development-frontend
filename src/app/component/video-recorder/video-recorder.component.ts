@@ -15,11 +15,11 @@ export class VideoRecorderComponent implements OnInit {
     @Input() question: Observable<Question>;
 
     public myQuestion: Question;
-    // public constraints = { "video": { width: { max: 320 } }, "audio": true }; // for video
-    public constraints = { "video": false, "audio": true };
-    public theStream: MediaStream;
-    public theRecorder;
-    public recordedChunks = [];
+
+    public video_contraints = { "video": { width: { max: 320 } }, "audio": true };
+    public videoStream: MediaStream;
+    public videoRecorder;
+    public videoRecordedChunks = [];
 
     public is_video_playing: boolean = false;
     public is_video_submitted: boolean = false;
@@ -30,8 +30,7 @@ export class VideoRecorderComponent implements OnInit {
 
     start_recording() {
         if (this.is_video_submitted) return;
-        let a = window.confirm("Kindly mute your laptop, else you may witness some reverberation noise");
-        if (a) navigator.mediaDevices.getUserMedia(this.constraints)
+        navigator.mediaDevices.getUserMedia(this.video_contraints)
             .then(stream => this.video_recording_callback(stream))
             .catch(e => {
                 console.error('getUserMedia() failed: ' + e);
@@ -40,50 +39,50 @@ export class VideoRecorderComponent implements OnInit {
     }
 
     video_recording_callback(stream) {
-        this.theStream = stream;
+        this.videoStream = stream;
         var video = document.querySelector('video');
         video.srcObject = stream;
-        let recorder;
+        let video_recorder;
         try {
-            // media recorder cannot record video in mp4 format!!
-            // recorder = new MediaRecorder(stream, { mimeType: "video/webm" }); // for video
-            recorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
+            video_recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
         } catch (e) {
             console.error('Exception while creating MediaRecorder: ' + e);
             window.alert('oops! something went wrong.');
             return;
         }
-        this.theRecorder = recorder;
-        recorder.ondataavailable =
-            (event) => { this.recordedChunks.push(event.data); };
-        recorder.start(100);
+        this.videoRecorder = video_recorder;
+        video_recorder.ondataavailable = event => { this.videoRecordedChunks.push(event.data); }
+        video_recorder.start(100);
         this.is_video_playing = true;
     }
 
+    stop() {
+        this.videoRecorder.stop();
+        this.videoStream.getTracks().forEach(track => track.stop());
+    }
+
     download() {
-        if (this.theRecorder.state == 'recording') {
-            this.theRecorder.stop();
-            this.theStream.getTracks().forEach(track => { track.stop(); });
-        }
-        // var blob = new Blob(this.recordedChunks, { type: "video/mp4" }); // for video
-        var blob = new Blob(this.recordedChunks, { type: "audio/wav" });
-        var url = URL.createObjectURL(blob);
+        if (this.videoRecorder.state == 'recording') this.stop();
+        var video = new Blob(this.videoRecordedChunks, { type: "video/mp4" }); // for video
+        var video_url = URL.createObjectURL(video);
+        this.download_local(video_url, 'mp4');
+        this.is_video_submitted = true;
+    }
+
+    download_local(url, extension) {
         var a = window.document.createElement("a");
         document.body.appendChild(a);
         a.href = url;
-        // a.download = `${this.job_name}.mp4`; // for video
-        a.download = `${this.job_name}.wav`;
+        a.download = `${this.job_name}.${extension}`;
         a.click();
         setTimeout(function () { URL.revokeObjectURL(url); }, 100);
-        this.is_video_submitted = true;
-
     }
 
     reset() {
         this.is_video_playing = false;
         this.is_video_submitted = false;
-        this.recordedChunks = [];
-        this.theRecorder = undefined;
-        this.theStream = null;
+        this.videoRecordedChunks = [];
+        this.videoRecorder = undefined;
+        this.videoStream = null;
     }
 }
