@@ -16,13 +16,13 @@
     </div>
     <!--resume preview here!-->
     <div class="col-sm-12 col-md-7 d-none d-md-block">
-        <div class="lead text-secondary" *ngIf="show_preview">
+        <!-- <div class="lead text-secondary" *ngIf="show_preview">
             <strong>{{show_preview && selected_resume && !hide ? "Preview of your Resume" : "Resume Analysis"}}</strong>
             <div class="float-right">
                 <input type="checkbox" [(ngModel)]="hide">
                 <span style="font-size: 15px" class="pl-2">Hide Preview</span>
             </div>
-        </div>
+        </div> -->
         <br>
         <div class="d-flex justify-content-center pl-2">
             <img src="/assets/no_file.svg" class="img-fluid w-50" *ngIf="!show_preview || !selected_resume" alt="no file input given" />
@@ -55,7 +55,7 @@
 <!--details of the resume are shown here!!-->
 <ng-template #details>
     <br>
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column" *ngIf="resume_response">
         <div class="bg-white p-3 mb-3">
             <h5 class="text-secondary">Contact Details</h5>
             <strong class="pr-2">Email - </strong> {{resume_response ? resume_response.email : ""}} <br>

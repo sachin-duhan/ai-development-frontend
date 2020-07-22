@@ -11,7 +11,6 @@ import { Question } from '../@types/type';
 })
 
 export class QuestionsIntefaceComponent implements OnInit {
-
     public job_id: string;
     public active_question: Question;
     questions_list: Array<Question> = _backend.questions_list;
