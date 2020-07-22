@@ -1,204 +1,15 @@
-import { Candidate, Technology, Question, Program } from '../@types/type';
-
-export const candidate_list: Array<Candidate> = [
-    {
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro!',
-        name: 'Sachin Duhan',
-        email: 'abc@gmail.com',
-        id: '1',
-        skills: [{
-            title: 'Python'
-        }, {
-            title: 'AWS'
-        }, {
-            title: 'Azure'
-        }, {
-            title: 'Developer'
-        }],
-    },
-    {
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro!',
-        name: 'Aniket',
-        email: 'cdsn@gmail.com',
-        id: '2',
-        skills: [{
-            title: 'Python'
-        }, {
-            title: 'Mahcine Learning'
-        }, {
-            title: 'Artificial Intelligence'
-        }],
-    },
-    {
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro!',
-        name: 'Manoj Pandey',
-        email: 'abc@gmail.com',
-        id: '3',
-        skills: [{
-            title: 'Python'
-        }, {
-            title: 'Artificial Intelligence'
-        }, {
-            title: 'Developer'
-        }],
-    },
-    {
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro!',
-        name: 'Vikrant',
-        email: 'abc@gmail.com',
-        id: '4',
-        skills: [{
-            title: 'Python'
-        }, {
-            title: 'AWS'
-        }, {
-            title: 'Azure'
-        }, {
-            title: 'Developer'
-        }],
-    },
-    {
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro!',
-        name: 'Sahil',
-        email: 'cdsn@gmail.com',
-        id: '5',
-        skills: [{
-            title: 'Python'
-        }, {
-            title: 'Mahcine Learning'
-        }, {
-            title: 'Artificial Intelligence'
-        }],
-    },
-    {
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro!',
-        name: 'Akhil Juneja',
-        email: 'abc@gmail.com',
-        id: '6',
-        skills: [{
-            title: 'Python'
-        }, {
-            title: 'Artificial Intelligence'
-        }, {
-            title: 'Developer'
-        }],
-    },
-];
-
-export const filters_list: Array<Technology> = [
-    { title: 'Python Engineer' },
-    { title: 'Python Developer' },
-    { title: 'Data Science' },
-    { title: 'Machine Learning' },
-    { title: 'AWS' },
-    { title: 'Azure DevOps' },
-    { title: 'Data Engineer' },
-    { title: 'Linux Administrator' },
-    { title: 'DevOps Engineer' },
-];
-
-export const jobs_list: Array<Program> = [
-    { technology: [{ title: 'Python' }, { title: 'Data Science' }], location: 'USA', title: 'Data Engineer', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro', date: new Date(), type: 'job' },
-    { technology: [{ title: 'Python' }, { title: 'AWS' }], location: 'India', title: 'AWS Engineer', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro', date: new Date(), type: 'job' },
-    { technology: [{ title: 'Python' }, { title: 'Data Engineer' }], location: 'Japan', title: 'Data Engineer', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro', date: new Date(), type: 'job' },
-    { technology: [{ title: 'Python' }, { title: 'AWS' }], location: 'India', title: 'Python Developer', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro', date: new Date(), type: 'job' },
-    { technology: [{ title: 'Python' }, { title: 'AWS' }], location: 'London, UK', title: 'Machine Learning Engineer', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro', date: new Date(), type: 'job' },
-    { technology: [{ title: 'Python' }, { title: 'Data Engineer' }], location: 'Japan', title: 'Data Scienist', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro', date: new Date(), type: 'job' },
-]
-
-export const questions_list: Array<Question> = [
-    { id: "1", question: 'Hello, Kindly introduce yourself.' },
-    { id: "2", question: 'Tell me something about your experience.' },
-    { id: "3", question: 'How will you cop-up with stress and job life balance?' },
-    { id: "4", question: 'Why should we select you?' },
-]
-
-export const resume_response = {
-    Score: "0.10050378152592121",
-    college_name: "Delhi technological university",
-    company_names: [
-        "Bharat Electronics Limited",
-        "Wipro Ltd."
-    ],
-    degree: "B.tech",
-    designation: [
-        "NLP Engineer"
-    ],
-    "email": "namithakonda09@gmail.com",
-    "experience": [
-        "(05/2020 – 05/2020)",
-        "Full Stack Web developer",
-        "BookMyStall",
-        "01/2020 – 04/2020",
-        "Achievements/Tasks",
-        "Foundational Artiﬁcial Intelligence (04/2020 – 05/2020)",
-        "Hyderabad,India",
-        "Certiﬁcation of Core Java course in Dhanvantrai",
-        "Institute(ISO) (06/2018 – 12/2018)",
-        "Web development to automate diﬀerent modules of the",
-        "company's functionality.",
-        "NLP Engineer",
-        "Wipro Ltd.",
-        "02/2020 – 03/2020",
-        "Task",
-        "Bangalore,India",
-        "Natural Language Processing as part of HRSS",
-        "Java Developer",
-        "Bharat Electronics Limited",
-        "05/2019 – 06/2019",
-        "Achievements/Tasks",
-        "Hyderabad,India",
-        "Designed drone motion tracking & detection using image",
-        "sensing . Integrated with existing Aerial Surveillance System",
-        "of BEL",
-        "CO CURRICULAR",
-        "Bitgrit Campus Ambassador (01/2020 – Present)",
-        "Conducting contests ,Organised workshops,Datathon and Hackthons"
-    ],
-    "mobile_number": "8247607794",
-    "name": "Namitha Konda",
-    "no_of_pages": 1,
-    "skills": [
-        "C++",
-        "Content",
-        "Coding",
-        "Javascript",
-        "Technical",
-        "Java",
-        "Teaching",
-        "Php",
-        "Css",
-        "Opencv",
-        "Engineering",
-        "System",
-        "Reporting",
-        "Html",
-        "Keras",
-        "Js",
-        "Algorithms",
-        "Ai",
-        "Python",
-        "Mysql",
-        "Electronics",
-        "Marketing"
-    ],
-    "total_experience": 0.0
-};
-
-export const video_data = {
+{
     "word_count": 283,
     "word_count_message": "There were 283 words in the input. We need a minimum of 600, preferably 1,200 or more, to compute statistically significant estimates",
     "processed_language": "en",
-    "personality": [
-        {
+    "personality": [{
             "trait_id": "big5_openness",
             "name": "Openness",
             "category": "personality",
             "percentile": 0.9400957053604502,
             "raw_score": 0.7983163803025506,
             "significant": true,
-            "children": [
-                {
+            "children": [{
                     "trait_id": "facet_adventurousness",
                     "name": "Adventurousness",
                     "category": "personality",
@@ -255,8 +66,7 @@ export const video_data = {
             "percentile": 0.6620576618813738,
             "raw_score": 0.647550863899499,
             "significant": true,
-            "children": [
-                {
+            "children": [{
                     "trait_id": "facet_achievement_striving",
                     "name": "Achievement striving",
                     "category": "personality",
@@ -313,8 +123,7 @@ export const video_data = {
             "percentile": 0.0921363197024142,
             "raw_score": 0.4917588020806286,
             "significant": true,
-            "children": [
-                {
+            "children": [{
                     "trait_id": "facet_activity_level",
                     "name": "Activity level",
                     "category": "personality",
@@ -371,8 +180,7 @@ export const video_data = {
             "percentile": 0.013566135883019081,
             "raw_score": 0.6543563794137525,
             "significant": true,
-            "children": [
-                {
+            "children": [{
                     "trait_id": "facet_altruism",
                     "name": "Altruism",
                     "category": "personality",
@@ -429,8 +237,7 @@ export const video_data = {
             "percentile": 0.06883137751278767,
             "raw_score": 0.4291522268992315,
             "significant": true,
-            "children": [
-                {
+            "children": [{
                     "trait_id": "facet_anger",
                     "name": "Fiery",
                     "category": "personality",
@@ -481,8 +288,7 @@ export const video_data = {
             ]
         }
     ],
-    "needs": [
-        {
+    "needs": [{
             "trait_id": "need_challenge",
             "name": "Challenge",
             "category": "needs",
@@ -579,8 +385,7 @@ export const video_data = {
             "significant": true
         }
     ],
-    "values": [
-        {
+    "values": [{
             "trait_id": "value_conservation",
             "name": "Conservation",
             "category": "values",
@@ -621,12 +426,10 @@ export const video_data = {
             "significant": true
         }
     ],
-    "consumption_preferences": [
-        {
+    "consumption_preferences": [{
             "consumption_preference_category_id": "consumption_preferences_shopping",
             "name": "Purchasing Preferences",
-            "consumption_preferences": [
-                {
+            "consumption_preferences": [{
                     "consumption_preference_id": "consumption_preferences_automobile_ownership_cost",
                     "name": "Likely to be sensitive to ownership cost when buying automobiles",
                     "score": 1.0
@@ -691,8 +494,7 @@ export const video_data = {
         {
             "consumption_preference_category_id": "consumption_preferences_health_and_activity",
             "name": "Health & Activity Preferences",
-            "consumption_preferences": [
-                {
+            "consumption_preferences": [{
                     "consumption_preference_id": "consumption_preferences_eat_out",
                     "name": "Likely to eat out frequently",
                     "score": 0.0
@@ -712,30 +514,25 @@ export const video_data = {
         {
             "consumption_preference_category_id": "consumption_preferences_environmental_concern",
             "name": "Environmental Concern Preferences",
-            "consumption_preferences": [
-                {
-                    "consumption_preference_id": "consumption_preferences_concerned_environment",
-                    "name": "Likely to be concerned about the environment",
-                    "score": 1.0
-                }
-            ]
+            "consumption_preferences": [{
+                "consumption_preference_id": "consumption_preferences_concerned_environment",
+                "name": "Likely to be concerned about the environment",
+                "score": 1.0
+            }]
         },
         {
             "consumption_preference_category_id": "consumption_preferences_entrepreneurship",
             "name": "Entrepreneurship Preferences",
-            "consumption_preferences": [
-                {
-                    "consumption_preference_id": "consumption_preferences_start_business",
-                    "name": "Likely to consider starting a business in next few years",
-                    "score": 0.0
-                }
-            ]
+            "consumption_preferences": [{
+                "consumption_preference_id": "consumption_preferences_start_business",
+                "name": "Likely to consider starting a business in next few years",
+                "score": 0.0
+            }]
         },
         {
             "consumption_preference_category_id": "consumption_preferences_movie",
             "name": "Movie Preferences",
-            "consumption_preferences": [
-                {
+            "consumption_preferences": [{
                     "consumption_preference_id": "consumption_preferences_movie_romance",
                     "name": "Likely to like romance movies",
                     "score": 0.0
@@ -790,8 +587,7 @@ export const video_data = {
         {
             "consumption_preference_category_id": "consumption_preferences_music",
             "name": "Music Preferences",
-            "consumption_preferences": [
-                {
+            "consumption_preferences": [{
                     "consumption_preference_id": "consumption_preferences_music_rap",
                     "name": "Likely to like rap music",
                     "score": 0.5
@@ -841,8 +637,7 @@ export const video_data = {
         {
             "consumption_preference_category_id": "consumption_preferences_reading",
             "name": "Reading Preferences",
-            "consumption_preferences": [
-                {
+            "consumption_preferences": [{
                     "consumption_preference_id": "consumption_preferences_read_frequency",
                     "name": "Likely to read often",
                     "score": 1.0
@@ -872,19 +667,15 @@ export const video_data = {
         {
             "consumption_preference_category_id": "consumption_preferences_volunteering",
             "name": "Volunteering Preferences",
-            "consumption_preferences": [
-                {
-                    "consumption_preference_id": "consumption_preferences_volunteer",
-                    "name": "Likely to volunteer for social causes",
-                    "score": 1.0
-                }
-            ]
+            "consumption_preferences": [{
+                "consumption_preference_id": "consumption_preferences_volunteer",
+                "name": "Likely to volunteer for social causes",
+                "score": 1.0
+            }]
         }
     ],
-    "warnings": [
-        {
-            "warning_id": "WORD_COUNT_MESSAGE",
-            "message": "There were 283 words in the input. We need a minimum of 600, preferably 1,200 or more, to compute statistically significant estimates"
-        }
-    ]
+    "warnings": [{
+        "warning_id": "WORD_COUNT_MESSAGE",
+        "message": "There were 283 words in the input. We need a minimum of 600, preferably 1,200 or more, to compute statistically significant estimates"
+    }]
 }

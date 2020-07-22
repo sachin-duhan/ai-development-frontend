@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -13,6 +14,7 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
         AppRoutingModule,
         LoadingBarRouterModule
     ],

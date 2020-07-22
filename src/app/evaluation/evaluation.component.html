@@ -2,14 +2,14 @@
     <div class="col-sm-12 col-md-8 px-3">
         <div style="min-height: 400px;" class="bg-white shadow d-flex p-5 flex-column align-items-center justify-content-center">
             <img src="/assets/video.svg" height="80" class="pointer" alt="play video button here!">
-            <h6 class="text-muted mt-4 pointer">Play video</h6>
+            <h5 class="text-muted mt-4 pointer">Play video</h5>
         </div>
     </div>
     <div class="col-sm-12 col-md-4 px-3 pt-5 pt-md-0">
         <div class="w-100 gradient p-5"></div>
         <div id="push_up_30" class="d-flex flex-column align-items-center">
             <div class="bg-white shadow p-3 rounded-circle" style="width: 60px; height: 60px;"></div>
-            <h6 class="mt-4">Sachin Duhan</h6>
+            <h5 class="mt-4">Sachin Duhan</h5>
             <p class="text-center text-muted">
                 <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, veritatis!</small>
             </p>
@@ -24,16 +24,30 @@
 <br><br>
 <!--graphs and AI results shown below!-->
 <div class="row">
-    <div class="col-sm-12 col-md-4 p-3">
-        <h6 class="text-main">Text From Video</h6>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo officiis, assumenda iure, nulla incidunt quia placeat voluptates quaerat perferendis sit accusantium unde nesciunt! Id quas deleniti accusamus! Aliquid, similique asperiores.</p>
+    <div class="col-sm-12 col-sm-12 p-2">
+        <div class="p-3 my-3 bg-white rounded-lg">
+            <h5 class="text-main">Sentiments of the Applicant</h5>
+            <p>{{video_text}}</p>
+        </div>
     </div>
-    <div class="col-sm-12 col-md-4 p-3">
-        <h6 class="text-main">Sentiments of the Applicant</h6>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo officiis, assumenda iure, nulla incidunt quia placeat voluptates quaerat perferendis sit accusantium unde nesciunt! Id quas deleniti accusamus! Aliquid, similique asperiores.</p>
+    <div class="col-sm-12 col-md-6 p-3">
+        <h5 class="text-main">Values Analysis</h5>
+        <div style="display: block;">
+            <canvas baseChart [colors]="colors" [datasets]="values_data" [labels]="values_labels" [options]="options" [legend]="true" [chartType]="'bar'">
+        </canvas>
+        </div>
     </div>
-    <div class="col-sm-12 col-md-4 p-3">
-        <h6 class="text-main">Big 5 graph</h6>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo officiis, assumenda iure, nulla incidunt quia placeat voluptates quaerat perferendis sit accusantium unde nesciunt! Id quas deleniti accusamus! Aliquid, similique asperiores.</p>
+    <div class="col-sm-12 col-md-6 p-3">
+        <h5 class="text-main">Big 5 graph</h5>
+        <div style="display: block;">
+            <canvas baseChart [colors]="colors" [datasets]="personality_data" [labels]="personality_labels" [options]="options" [legend]="true" [chartType]="'bar'">
+        </canvas>
+        </div>
+    </div>
+    <div class="col-sm-12 col-sm-12 p-2">
+        <div class="p-3 my-3 bg-white rounded-lg">
+            <h5 class="text-main">Text From Video</h5>
+            <p>{{video_text}}</p>
+        </div>
     </div>
 </div>
