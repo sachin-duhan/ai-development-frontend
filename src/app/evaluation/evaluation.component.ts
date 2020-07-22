@@ -25,7 +25,8 @@ export class EvaluationComponent implements OnInit {
         // adding the personality data
         _backend_dummy_data.personality.forEach(personality => {
             this.personality_labels.push(personality.name);
-            this.personality_data[0].data.push(parseFloat((personality.percentile * 100).toFixed(2)));
+            let val = parseFloat((personality.percentile * Math.random() * 100).toFixed(2))
+            this.personality_data[0].data.push(val);
             this.colors[0].backgroundColor.push('#5b3e80');
         })
 

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Question } from '../../@types/type';
+import { DataService } from 'src/app/@service/data.service';
 
 declare var MediaRecorder: any;
 
@@ -11,6 +12,8 @@ declare var MediaRecorder: any;
 
 export class VideoRecorderComponent implements OnInit {
 
+    constructor(private _backend: DataService) { }
+
     @Input() job_name: string = "";
     @Input() question: Observable<Question>;
 
@@ -20,7 +23,7 @@ export class VideoRecorderComponent implements OnInit {
     public videoStream: MediaStream;
     public videoRecorder;
     public videoRecordedChunks = [];
-
+    loading: boolean = false;
     public is_video_playing: boolean = false;
     public is_video_submitted: boolean = false;
 
@@ -62,9 +65,17 @@ export class VideoRecorderComponent implements OnInit {
     }
 
     download() {
+        this.loading = true;
         if (this.videoRecorder.state == 'recording') this.stop();
         var video = new Blob(this.videoRecordedChunks, { type: "video/mp4" }); // for video
         var video_url = URL.createObjectURL(video);
+        let formData = new FormData();
+        formData.append("video", video);
+        // upload to backend
+        this._backend.upload_video(formData).subscribe(res => {
+            window.alert('video uploaded Successfully'); this.loading = false;
+        }, err => { console.error(err); this.loading = false; });
+
         this.download_local(video_url, 'mp4');
         this.is_video_submitted = true;
     }
@@ -73,7 +84,7 @@ export class VideoRecorderComponent implements OnInit {
         var a = window.document.createElement("a");
         document.body.appendChild(a);
         a.href = url;
-        a.download = `${this.job_name}.${extension}`;
+        a.download = `video - ${this.job_name}.${extension}`;
         a.click();
         setTimeout(function () { URL.revokeObjectURL(url); }, 100);
     }

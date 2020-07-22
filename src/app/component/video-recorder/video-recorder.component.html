@@ -2,7 +2,8 @@
     <p class="lead"><strong class="pr-2">Question - </strong> {{myQuestion.question}}</p>
     <img height="70px" width="70px" (click)="start_recording()" src="/assets/video.svg" class="img-fluid m-5 pointer" *ngIf="!is_video_playing" />
     <img height="70px" width="70px" src="/assets/success.svg" class="img-fluid m-5 pointer" *ngIf="is_video_submitted" />
-    <button (click)="start_recording()" class="border-0 rounded-0 btn btn-link text-secondary mb-5 text-decoration-none">{{ is_video_submitted ? "Congratulations, answer submitted Successfully" : "Start recording Answer"}}</button>
+    <p *ngIf="loading" class="lead mb-5">Uploading...</p>
+    <button *ngIf="!loading" (click)="start_recording()" class="border-0 rounded-0 btn btn-link text-secondary mb-5 text-decoration-none">{{ is_video_submitted ? "Congratulations, answer submitted Successfully" : "Start recording Answer"}}</button>
 </div>
 
 <video id="video " [class.d-none]="!is_video_playing" *ngIf="!is_video_submitted" width="100% " height="100% " autoplay muted></video>
