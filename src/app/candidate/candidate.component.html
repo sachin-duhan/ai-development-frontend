@@ -8,25 +8,11 @@
     <strong class="pr-2">OOPS! </strong> {{item}}
 </div>
 <br>
-
 <div class="row">
     <div class="col-sm-12 col-md-5">
         <input (change)="onFileSelected($event)" class="border w-100 rounded-lg p-3 pointer" required type="file" id="file">
-        <button (click)="upload_resume()" class="btn btn-block btn-primary border-0 rounded-0 mt-3" [disabled]="loading">{{loading ? "Loading..." : "Upload"}}</button>
-        <div class="w-100 mt-3" *ngIf="!hide">
-            <div class="bg-white p-3 mb-3">
-                <h6 class="text-secondary">Contact Details</h6>
-
-            </div>
-            <div class="bg-white p-3 mb-3">
-                <h6 class="text-secondary">Education Details</h6>
-
-            </div>
-            <div class="bg-white p-3 mb-3">
-                <h6 class="text-secondary">Skills</h6>
-
-            </div>
-        </div>
+        <button (click)="upload_resume()" class="btn btn-block btn-primary border-0 rounded-0 mt-3" [disabled]="loading">{{loading ? "Uploading..." : "Upload"}}</button>
+        <div class="w-100 mt-3" *ngIf="hide; else details"></div>
     </div>
     <!--resume preview here!-->
     <div class="col-sm-12 col-md-7 d-none d-md-block">
@@ -40,20 +26,13 @@
         <br>
         <div class="d-flex justify-content-center pl-2">
             <img src="/assets/no_file.svg" class="img-fluid w-50" *ngIf="!show_preview || !selected_resume" alt="no file input given" />
-            <pdf-viewer *ngIf="show_preview && !hide" [src]="selected_resume" [render-text]="true" [zoom]="0.75" style="display: block;"></pdf-viewer>
-            <div class="w-100 mt-3" *ngIf="hide">
-                <div class="bg-white p-3 mb-3">
-                    <h6 class="text-secondary">Contact Details</h6>
-                </div>
-                <div class="bg-white p-3 mb-3">
-                    <h6 class="text-secondary">Education Details</h6>
-
-                </div>
-                <div class="bg-white p-3 mb-3">
-                    <h6 class="text-secondary">Skills</h6>
-
-                </div>
+            <div *ngIf="show_preview && !hide">
+                <br><br>
+                <img src="/assets/success.svg" class="img-fluid w-30" alt="success" />
+                <p class="lead mt-5">{{loading ? "Uploading..." : "Click on submit to upload"}}</p>
             </div>
+            <!-- <pdf-viewer *ngIf="show_preview && !hide" [src]="selected_resume" [render-text]="true" [zoom]="0.75" style="display: block;"></pdf-viewer> -->
+            <!-- <div class="w-100 mt-3" *ngIf="!hide; else details"></div> -->
         </div>
     </div>
 </div>
@@ -72,3 +51,26 @@
         </div>
     </div>
 </div>
+
+<!--details of the resume are shown here!!-->
+<ng-template #details>
+    <br>
+    <div class="d-flex flex-column">
+        <div class="bg-white p-3 mb-3">
+            <h5 class="text-secondary">Contact Details</h5>
+            <strong class="pr-2">Email - </strong> {{resume_response ? resume_response.email : ""}} <br>
+            <strong class="pr-2">Phone Number - </strong> {{resume_response ? resume_response.mobile_number : ""}}
+        </div>
+        <div class="bg-white p-3 mb-3">
+            <h5 class="text-secondary">Education Details</h5>
+            <strong class="pr-2">Institute - </strong> {{resume_response ? resume_response.college_name : ""}} <br>
+            <strong class="pr-2">Qualification Degree - </strong> {{resume_response ? resume_response.degree : ""}}
+        </div>
+        <div class="bg-white p-3 mb-3">
+            <h5 class="text-secondary">Skills</h5>
+            <div *ngIf="resume_response">
+                <span class="badge text-secondary px-2 m-2 border rounded" *ngFor="let item of resume_response.skills">{{item}}</span>
+            </div>
+        </div>
+    </div>
+</ng-template>

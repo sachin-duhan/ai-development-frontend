@@ -54,8 +54,8 @@ export class CandidateComponent implements OnInit {
         formData.append("enc", this.selected_resume);
         this.loading = true;
         this._backend.upload_resume(formData).subscribe(
-            res => { console.log(res); this.resume_response = _dummy.resume_response; this.loading = false; },
-            err => { console.log(err); this.error_msg.push(err.message); this.loading = false; }
+            res => { console.log(res); this.loading = false; this.resume_response = res; },
+            err => { console.log(err); this.resume_response = _dummy.resume_response; this.loading = false; }
         );
         this.job_recommendation = [
             { title: "Data Scientist", _id: "1", description: "requirement for a Data Scientist", image: "https://d1jnx9ba8s6j9r.cloudfront.net/imgver.1551437392/img/co_img_338_1501838305.png", },

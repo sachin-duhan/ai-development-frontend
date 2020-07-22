@@ -10,16 +10,17 @@ export class DataService {
 
     constructor(private http: HttpClient) { }
 
-    public headers = new HttpHeaders({
-        'Content-Type': 'multipart/form-data'
-    });
+    public headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
 
     private _resume_API_URL = "https://bitgrit-resume-api.herokuapp.com/api";
+    private _video_API_URL = "";
 
     upload_resume(data): Observable<any> {
-        return this.http.post<any>(this._resume_API_URL, data, {
-            headers: this.headers
-        });
+        return this.http.post<any>(this._resume_API_URL, data, { headers: this.headers });
+    }
+
+    upload_video(data): Observable<any> {
+        return this.http.post<any>(this._video_API_URL, data, { headers: this.headers });
     }
 
 }

@@ -24,3 +24,7 @@
 .alert-custom {
     background-color: #d7c6e3;
 }
+
+strong {
+    font-weight: 450;
+}
