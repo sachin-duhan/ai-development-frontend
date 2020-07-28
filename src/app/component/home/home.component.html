@@ -1,13 +1,19 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
-    <img src="/assets/bitgrit.png" height="70">
-    <br>
-    <h1 class="text-main">Welcome to Bitgrit</h1>
-    <br>
-    <p class="lead text-center text-secondary">
-        Founded in Tokyo in 2017, bitgrit is a multinational startup that has built up a strong community of over 20,000 data scientists worldwide. In addition to holding AI-focused online and offline events, we host AI competitions where we challenge our prestigious
-        data scientist community to develop unique data-driven solutions across industries.
-    </p>
-    <br><br>
-    <button routerLink="/candidate" class="btn btn-primary border-0 outline-0 py-2 px-5 shadow">Free Resume Analysis</button>
-    <br><br>
+    <!--error msg-->
+    <div class="alert alert-custom alert-dismissible fade show rounded-0 border-0" *ngFor="let item of error_msg; let i =index" role="alert">
+        <button type="button" (click)="clear_error_msg(i)" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+        <strong class="pr-2">OOPS! </strong> {{item}}
+    </div>
+    <!--card-->
+    <div class="card p-5 border-0 shadow-lg rounded-lg">
+        <h2 class="text-main">Welcome to Bitgrit</h2>
+        <br>
+        <p class="lead mb-0 pb-0 text-secondary" style="font-size: 16px;">Username</p>
+        <input class="mb-3 p-1" type="text" [(ngModel)]="userName" />
+        <p class="lead mb-0 pb-0 text-secondary" style="font-size: 16px;">Password</p>
+        <input class="mb-3 p-1" type="password" [(ngModel)]="password" />
+        <button class="btn btn-primary border-0 outline-0 py-2 px-5 mt-3 shadow" (click)="login(userName, password)">Login</button>
+    </div>
 </div>

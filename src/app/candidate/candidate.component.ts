@@ -13,18 +13,18 @@ export class CandidateComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private _backend: DataService
+        private _backend: DataService,
     ) { }
-    loading: boolean = false;
-    selected_resume: File = undefined;
-    show_preview: boolean = false;
-    hide: boolean = false;
-    error_msg: Array<string> = [];
-    job_recommendation: Array<Job> = []
+    public loading: boolean = false;
+    public selected_resume: File = undefined;
+    public show_preview: boolean = false;
+    public hide: boolean = false;
+    public error_msg: Array<string> = [];
+    public job_recommendation: Array<Job> = []
 
-    resume_response;
-    ngOnInit() {
-    }
+    public resume_response;
+    
+    ngOnInit() { }
 
     onFileSelected($event) {
         this.error_msg = [];
@@ -59,7 +59,7 @@ export class CandidateComponent implements OnInit {
         );
     }
 
-    upload_resume_callback(res){
+    upload_resume_callback(res) {
         this.loading = false; this.resume_response = res;
         this.job_recommendation = [
             { title: "Data Scientist", _id: "1", description: "requirement for a Data Scientist", image: "https://d1jnx9ba8s6j9r.cloudfront.net/imgver.1551437392/img/co_img_338_1501838305.png", },

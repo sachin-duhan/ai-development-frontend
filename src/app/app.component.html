@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light navbar-default navbar-fixed-top bg-white">
+<nav *ngIf="navigation_list.length > 0" class="navbar navbar-expand-sm navbar-light navbar-default navbar-fixed-top bg-white">
     <ngx-loading-bar [color]="'#5b3e80'" [height]="2" [includeSpinner]="false"></ngx-loading-bar>
     <div class="container">
         <a routerLink="/" class="navbar-brand">
@@ -6,16 +6,15 @@
         </a>
         <!--icon for the navbar-->
         <button type="button" class="navbar-toggler outline-0 border-0" data-toggle="collapse" data-target="#navbarCollapse">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="24px" height="24px">
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-        </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="24px" height="24px">
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+      </svg>
     </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ml-auto">
-                <a *ngFor="let item of navigation_list" [routerLink]="item.url" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="px-lg-4 px-2 nav-item nav-link">
-          {{item.title | titlecase}}
-        </a>
+                <a *ngFor="let item of navigation_list" [routerLink]="item.url" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="px-lg-4 px-2 nav-item nav-link">{{item.title | titlecase}}</a>
+                <a class="px-lg-4 px-2 nav-item nav-link pointer" (click)="logout()" *ngIf="isLoggedIn"> Logout</a>
             </div>
         </div>
     </div>
@@ -28,7 +27,7 @@
 </div>
 <br>
 <!--footer here! refrenece taken from bitgrit.net-->
-<footer class="d-md-flex align-items-center container-fluid mt-5 px-3 px-md-5 py-5 bg-white justify-content-between">
+<footer *ngIf="navigation_list.length > 0" class="d-md-flex align-items-center container-fluid mt-5 px-3 px-md-5 py-5 bg-white justify-content-between">
     <div class="d-flex justify-content-between">
         <a *ngFor="let item of social_media_links" href="{{item.url}}">
             <img src="{{item.path}}" height="32" class="mx-3" alt="social media icon" />

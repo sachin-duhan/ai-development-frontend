@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { LoginService } from './@service/login.service';
 
 @Component({
     selector: 'app-root',
@@ -10,26 +11,57 @@ export class AppComponent implements OnInit {
 
     // used in footer for copyright year display!
     year = new Date().getFullYear();
+    constructor(
+        private router: Router,
+        private _login: LoginService,
+    ) { }
 
-    constructor(private router: Router) { }
+    isLoggedIn: boolean = false;
+    navigation_list: navbar[] = [];
+
     ngOnInit() {
-        // used for navigate to top on route chnage or navigate!
-        // primarily for better user experience.
+        this.navlist_update_handler();
         this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) return;
-            window.scrollTo(0, 0)
+            else {
+                this._login.auth_guard_navigation_handler();
+                window.scrollTo(0, 0)
+            }
         });
     }
 
-    // navbar navigate list
-    navigation_list: Array<{ title: string, url: string }> = [
-        { url: 'candidate', title: 'Candidate' },
-        { url: 'interview/1', title: 'Interview' },
-        { url: 'manager', title: 'Manager' },
-        { url: 'evaluate', title: 'Evaluation' },
-    ];
+    logout(): void {
+        this._login.logout();
+    }
 
-    // footer social media icon!
+    navlist_update_handler(): void {
+        this._login.user_role.subscribe(role => {
+            this.navigation_list = [];
+            if (!role) {
+                // this.navigation_list = [{ title: 'Login', url: '/' }];
+                this.router.navigate['/'];
+                this.isLoggedIn = false;
+            }
+            else {
+                this.isLoggedIn = true;
+                if (role === 'user') {
+                    this.navigation_list = [
+                        { url: 'candidate', title: 'Candidate' },
+                        { url: 'interview/1', title: 'Interview' },
+                    ];
+                    this.router.navigate(['candidate']);
+                    this.isLoggedIn = true;
+                } else if (role === 'admin') {
+                    this.navigation_list = [
+                        { url: 'manager', title: 'Manager' },
+                        { url: 'evaluate', title: 'Evaluation' },
+                    ];
+                    this.router.navigate(['manager']);
+                }
+            }
+        });
+    }
+
     social_media_links: Array<{ url: string; path: string }> = [
         { url: '#!', path: '/assets/social media/facebook.svg' },
         { url: '#!', path: '/assets/social media/youtube.svg' },
@@ -37,3 +69,4 @@ export class AppComponent implements OnInit {
         { url: '#!', path: '/assets/social media/instagram.svg' },
     ]
 }
+interface navbar { title: string, url: string }

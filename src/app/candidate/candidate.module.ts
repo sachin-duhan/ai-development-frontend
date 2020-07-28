@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 import { CandidateRoutingModule } from './candidate-routing.module';
 import { CandidateComponent } from './candidate.component';
@@ -12,8 +11,7 @@ import { DataService } from '../@service/data.service';
     imports: [
         CommonModule,
         CandidateRoutingModule,
-        PdfViewerModule,
-        FormsModule
+        PdfViewerModule
     ],
     providers: [DataService]
 })

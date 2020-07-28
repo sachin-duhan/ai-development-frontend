@@ -145,3 +145,7 @@ video {
 .recording-animation::before {
     animation-duration: 2s;
 }
+
+.alert-custom {
+    background-color: #d7c6e3;
+}
