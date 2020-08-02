@@ -23,7 +23,7 @@ export class EvaluationComponent implements OnInit {
     video_text: string = v_text.video_text;
     ngOnInit() {
         this.loading = true;
-        setInterval(() => {
+        setTimeout(() => {
             this.setter();
         }, 8000);
     }

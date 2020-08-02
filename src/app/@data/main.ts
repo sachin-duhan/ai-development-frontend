@@ -5,9 +5,9 @@ I'm have an entrepreneur mindset, a born leader, a public speaker, a socialist, 
 
 export const candidate_list: Array<Candidate> = [
     {
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro!',
+        bio: `I'm a full-stack developer and bug hunter. ML enthusiast and keen learner.`,
         name: 'Sachin Duhan',
-        email: 'abc@gmail.com',
+        email: 'duhan.sachin@gmail.com',
         id: '1',
         skills: [{
             title: 'Python'
@@ -20,9 +20,9 @@ export const candidate_list: Array<Candidate> = [
         }],
     },
     {
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro!',
+        bio: 'A MAchine learning engineer and data engineer with 3+ years of experience.',
         name: 'Aniket',
-        email: 'cdsn@gmail.com',
+        email: 'anikey_rathi@gmail.com',
         id: '2',
         skills: [{
             title: 'Python'
@@ -33,51 +33,10 @@ export const candidate_list: Array<Candidate> = [
         }],
     },
     {
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro!',
+        bio: 'Fresher and Machine learning enthusiast, looking forward to contribute in ML sector.',
         name: 'Manoj Pandey',
-        email: 'abc@gmail.com',
+        email: 'm_pandey12@gmail.com',
         id: '3',
-        skills: [{
-            title: 'Python'
-        }, {
-            title: 'Artificial Intelligence'
-        }, {
-            title: 'Developer'
-        }],
-    },
-    {
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro!',
-        name: 'Vikrant',
-        email: 'abc@gmail.com',
-        id: '4',
-        skills: [{
-            title: 'Python'
-        }, {
-            title: 'AWS'
-        }, {
-            title: 'Azure'
-        }, {
-            title: 'Developer'
-        }],
-    },
-    {
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro!',
-        name: 'Sahil',
-        email: 'cdsn@gmail.com',
-        id: '5',
-        skills: [{
-            title: 'Python'
-        }, {
-            title: 'Mahcine Learning'
-        }, {
-            title: 'Artificial Intelligence'
-        }],
-    },
-    {
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro!',
-        name: 'Akhil Juneja',
-        email: 'abc@gmail.com',
-        id: '6',
         skills: [{
             title: 'Python'
         }, {
@@ -90,23 +49,18 @@ export const candidate_list: Array<Candidate> = [
 
 export const filters_list: Array<Technology> = [
     { title: 'Python Engineer' },
-    { title: 'Python Developer' },
     { title: 'Data Science' },
     { title: 'Machine Learning' },
     { title: 'AWS' },
     { title: 'Azure DevOps' },
     { title: 'Data Engineer' },
-    { title: 'Linux Administrator' },
     { title: 'DevOps Engineer' },
 ];
 
 export const jobs_list: Array<Program> = [
-    { technology: [{ title: 'Python' }, { title: 'Data Science' }], location: 'USA', title: 'Data Engineer', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro', date: new Date(), type: 'job' },
-    { technology: [{ title: 'Python' }, { title: 'AWS' }], location: 'India', title: 'AWS Engineer', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro', date: new Date(), type: 'job' },
-    { technology: [{ title: 'Python' }, { title: 'Data Engineer' }], location: 'Japan', title: 'Data Engineer', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro', date: new Date(), type: 'job' },
-    { technology: [{ title: 'Python' }, { title: 'AWS' }], location: 'India', title: 'Python Developer', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro', date: new Date(), type: 'job' },
-    { technology: [{ title: 'Python' }, { title: 'AWS' }], location: 'London, UK', title: 'Machine Learning Engineer', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro', date: new Date(), type: 'job' },
-    { technology: [{ title: 'Python' }, { title: 'Data Engineer' }], location: 'Japan', title: 'Data Scienist', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, porro', date: new Date(), type: 'job' },
+    { technology: [{ title: 'Python' }, { title: 'Data Science' }], location: 'USA', title: 'Data Engineer', description: 'We are looking for a savvy Data Engineer to join our growing team of analytics experts. The hire will be responsible for expanding and optimizing our data. 2+ years of experience...', date: new Date(), type: 'job' },
+    { technology: [{ title: 'Python' }, { title: 'Data Analyst' }], location: 'India', title: 'Data Analyst', description: 'We are looking for a experienced Data Analyst for gurugram, India to join our growing team of analytics experts. The hire will be responsible for Processing and optimizing...', date: new Date(), type: 'job' },
+    { technology: [{ title: 'Python' }, { title: 'Data Engineer' }], location: 'Japan', title: 'Data Engineer', description: 'We are looking for a Data Engineer to join our growing team of analytics experts. The hire will be responsible for manipulating and understanding our data and data pipeline architecture...', date: new Date(), type: 'job' }
 ]
 
 export const questions_list: Array<Question> = [

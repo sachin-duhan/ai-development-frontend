@@ -10,8 +10,8 @@
             <h5 class="text-muted">Available Positions</h5>
             <div *ngFor="let item of jobs_list" class="col-sm-12 col-md-4 p-2">
                 <div class="bg-white p-3 rounded-lg" id="hover_shadow">
-                    <h6 class="text-secondary pointer">{{item.title}}</h6>
-                    <p><small>{{item.description}}</small></p>
+                    <h5 class="text-main pointer">{{item.title}}</h5>
+                    <p><small>{{item.description}} <a href="/assets/JD.docx" target="_blank">read more</a></small></p>
                     <img src="/assets/map.svg" /> <span class="pl-2">{{item.location}}</span>
                 </div>
             </div>
