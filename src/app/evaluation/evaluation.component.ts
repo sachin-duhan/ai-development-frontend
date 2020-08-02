@@ -25,7 +25,7 @@ export class EvaluationComponent implements OnInit {
         this.loading = true;
         setTimeout(() => {
             this.setter();
-        }, 8000);
+        }, 12000);
     }
 
     setter() {
