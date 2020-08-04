@@ -74,14 +74,13 @@ export const resume_response = {
     Score: "0.10050378152592121",
     college_name: "Delhi technological university",
     company_names: [
-        "bitgrit inc",
-        "Wipro Ltd."
+        "bitgrit inc"
     ],
     degree: "B.tech",
     designation: [
         "Tech consultant"
     ],
-    "email": "antrix_gupta@gmail.com",
+    "email": "sachin+bt2k17@dtu.ac.in",
     "experience": [
         "(05/2020 – 05/2020)",
         "Full Stack Web developer",

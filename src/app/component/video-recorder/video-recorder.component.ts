@@ -67,16 +67,15 @@ export class VideoRecorderComponent implements OnInit {
     download() {
         this.loading = true;
         if (this.videoRecorder.state == 'recording') this.stop();
-        var video = new Blob(this.videoRecordedChunks, { type: "video/mp4" }); // for video
+        var video = new Blob(this.videoRecordedChunks, { type: "video/mp4" });
         var video_url = URL.createObjectURL(video);
         let formData = new FormData();
-        formData.append("video", video);
+        formData.append("file", video);
         // upload to backend
         this._backend.upload_video(formData).subscribe(res => {
             window.alert('video uploaded Successfully'); this.loading = false;
         }, err => { console.error(err); this.loading = false; });
-
-        this.download_local(video_url, 'mp4');
+        // this.download_local(video_url, 'mp4');
         this.is_video_submitted = true;
     }
 
