@@ -1,5 +1,5 @@
 <div class="p-5 d-flex bg-white flex-column align-items-center justify-content-center shadow mb-3" *ngIf="!is_video_playing || is_video_submitted">
-    <p class="lead"><strong class="pr-2">Question - </strong> {{myQuestion.question}}</p>
+    <p class="lead"><strong class="pr-2">Hi, {{username}} - </strong> {{myQuestion.question}}</p>
     <img height="70px" width="70px" (click)="start_recording()" src="/assets/video.svg" class="img-fluid m-5 pointer" *ngIf="!is_video_playing" />
     <img height="70px" width="70px" src="/assets/success.svg" class="img-fluid m-5 pointer" *ngIf="is_video_submitted" />
     <p *ngIf="loading" class="lead mb-5">Uploading...</p>

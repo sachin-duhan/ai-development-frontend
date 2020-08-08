@@ -15,6 +15,7 @@ export class CandidateComponent implements OnInit {
         private router: Router,
         private _backend: DataService,
     ) { }
+
     public loading: boolean = false;
     public selected_resume: File = undefined;
     public show_preview: boolean = false;
@@ -23,7 +24,7 @@ export class CandidateComponent implements OnInit {
     public job_recommendation: Array<Job> = []
 
     public resume_response;
-    
+
     ngOnInit() { }
 
     onFileSelected($event) {
@@ -49,25 +50,28 @@ export class CandidateComponent implements OnInit {
 
     upload_resume(): void {
         this.error_msg = [];
-        if (!this.selected_resume) { this.error_msg.push("Kindly select a Resume."); return; }
+        if (!this.selected_resume) {
+            this.error_msg.push("Kindly select a Resume.");
+            return;
+        }
+
         let formData = new FormData();
         formData.append("enc", this.selected_resume);
+
         this.loading = true;
         this._backend.upload_resume(formData).subscribe(
             res => this.upload_resume_callback(res),
-            err => { console.log(err); setTimeout(() => {
-                this.resume_response = _dummy.resume_response; this.loading = false;
-            }, 12000); }
+            err => {
+                console.log(err);
+                this.resume_response = _dummy.resume_response;
+                this.loading = false;
+            }
         );
     }
 
     upload_resume_callback(res) {
-        this.loading = false; this.resume_response = res;
-        // this.job_recommendation = [
-        //     { title: "Data Scientist", _id: "1", description: "requirement for a Data Scientist", image: "https://d1jnx9ba8s6j9r.cloudfront.net/imgver.1551437392/img/co_img_338_1501838305.png", },
-        //     { title: "Data Scientist", _id: "2", description: "requirement for a Data Scientist", image: "https://5.imimg.com/data5/DL/VM/MY-26200765/data-science-training-500x500.png", },
-        //     { title: "Machine Learing Engineer", _id: "3", description: "requirement for a Data Scientist", image: "https://online.stanford.edu/sites/default/files/styles/figure_default/public/2018-03/reinforcement-learning_cs234-original.jpg?itok=NDm4Wy0q", },
-        // ]
+        this.loading = false;
+        this.resume_response = res;
     }
 
 }

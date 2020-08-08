@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { ProgramManagerRoutingModule } from './program-manager-routing.module';
 import { ProgramManagerComponent } from './program-manager.component';
 
-
 @NgModule({
   declarations: [ProgramManagerComponent],
   imports: [

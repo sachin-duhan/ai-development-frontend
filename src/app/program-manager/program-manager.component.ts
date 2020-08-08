@@ -12,9 +12,7 @@ export class ProgramManagerComponent implements OnInit {
     selected_candidates: Array<Candidate> = [];
     intrested_candidate: Array<Candidate> = _backend.candidate_list;;
     filters: Array<Technology> = _backend.filters_list;
-
     jobs_list: Array<Program> = _backend.jobs_list;
-    constructor() { }
 
     ngOnInit() { }
 

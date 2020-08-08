@@ -20,6 +20,7 @@ import { HomeComponent } from './component/home/home.component';
         FormsModule,
         LoadingBarRouterModule
     ],
+    exports: [FormsModule],
     providers: [],
     bootstrap: [AppComponent]
 })

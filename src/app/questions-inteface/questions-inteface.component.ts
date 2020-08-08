@@ -11,9 +11,11 @@ import { Question } from '../@types/type';
 })
 
 export class QuestionsIntefaceComponent implements OnInit {
+
     public job_id: string;
     public active_question: Question;
     questions_list: Array<Question> = _backend.questions_list;
+    public username:string = 'Enter Username';
 
     constructor(private activatedRoute: ActivatedRoute) { }
     public shared_question: BehaviorSubject<Question> = new BehaviorSubject(this.questions_list[0]);

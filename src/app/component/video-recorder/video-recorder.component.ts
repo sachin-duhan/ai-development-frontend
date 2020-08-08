@@ -16,6 +16,7 @@ export class VideoRecorderComponent implements OnInit {
 
     @Input() job_name: string = "";
     @Input() question: Observable<Question>;
+    @Input() username:string = 'No username';
 
     public myQuestion: Question;
 
@@ -68,18 +69,20 @@ export class VideoRecorderComponent implements OnInit {
         this.loading = true;
         if (this.videoRecorder.state == 'recording') this.stop();
         var video = new Blob(this.videoRecordedChunks, { type: "video/mp4" });
-        var video_url = URL.createObjectURL(video);
+        // var video_url = URL.createObjectURL(video);
         let formData = new FormData();
-        formData.append("file", video);
-        // upload to backend
+        formData.append("file", video, "video.mp4");
+        formData.append("username",this.username);
+        formData.append("question_no",'1');
         this._backend.upload_video(formData).subscribe(res => {
-            window.alert('video uploaded Successfully'); this.loading = false;
+            window.alert('video uploaded Successfully');
+            this.loading = false;
         }, err => { console.error(err); this.loading = false; });
         // this.download_local(video_url, 'mp4');
         this.is_video_submitted = true;
     }
 
-    download_local(url, extension) {
+    private download_local(url, extension) {
         var a = window.document.createElement("a");
         document.body.appendChild(a);
         a.href = url;

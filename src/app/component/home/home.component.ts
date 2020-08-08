@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/@service/login.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-home',
@@ -21,8 +22,10 @@ export class HomeComponent implements OnInit {
             this.error_msg.push('password is required');
             return;
         }
-        let role = this._loginService.handleLogin(this.userName, this.password);
+        const role = this._loginService.handleLogin(this.userName, this.password);
         if (!role) this.error_msg.push('Invalid Login credentials');
+        else this._loginService.auth_guard_navigation_handler();
+        window.location.reload();
     }
 
     clear_error_msg(index: number) { this.error_msg.splice(index, 1); }

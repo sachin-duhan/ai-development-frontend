@@ -9,7 +9,6 @@ import { LoginService } from './@service/login.service';
 })
 export class AppComponent implements OnInit {
 
-    // used in footer for copyright year display!
     year = new Date().getFullYear();
     constructor(
         private router: Router,
@@ -32,34 +31,33 @@ export class AppComponent implements OnInit {
 
     logout(): void {
         this._login.logout();
+        this.navigation_list = [];
     }
 
     navlist_update_handler(): void {
-        this._login.user_role.subscribe(role => {
-            this.navigation_list = [];
-            if (!role) {
-                // this.navigation_list = [{ title: 'Login', url: '/' }];
-                this.router.navigate['/'];
-                this.isLoggedIn = false;
-            }
-            else {
+        const role = this._login.isLoggedIn();
+        this.navigation_list = [];
+        if (!role) {
+            this.router.navigate['/'];
+            this.isLoggedIn = false;
+        }
+        else {
+            this.isLoggedIn = true;
+            if (role === 'user') {
+                this.navigation_list = [
+                    { url: 'candidate', title: 'Candidate' },
+                    { url: 'interview/1', title: 'Interview' },
+                ];
+                this.router.navigate(['candidate']);
                 this.isLoggedIn = true;
-                if (role === 'user') {
-                    this.navigation_list = [
-                        { url: 'candidate', title: 'Candidate' },
-                        { url: 'interview/1', title: 'Interview' },
-                    ];
-                    this.router.navigate(['candidate']);
-                    this.isLoggedIn = true;
-                } else if (role === 'admin') {
-                    this.navigation_list = [
-                        { url: 'manager', title: 'Manager' },
-                        { url: 'evaluate', title: 'Evaluation' },
-                    ];
-                    this.router.navigate(['manager']);
-                }
+            } else if (role === 'admin') {
+                this.navigation_list = [
+                    { url: 'manager', title: 'Manager' },
+                    { url: 'evaluate', title: 'Evaluation' },
+                ];
+                this.router.navigate(['manager']);
             }
-        });
+        }
     }
 
     social_media_links: Array<{ url: string; path: string }> = [
