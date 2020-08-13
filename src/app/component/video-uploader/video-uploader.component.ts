@@ -11,10 +11,7 @@ export class VideoUploaderComponent implements OnInit {
 
     @Input() question: Observable<Question>;
     @Input() username: string = 'No username';
-    constructor(
-        private _backend: DataService,
-    ) { }
-
+    constructor(private _backend: DataService) { }
 
     public loading: boolean = false;
     public myQuestion: Question;
@@ -23,6 +20,7 @@ export class VideoUploaderComponent implements OnInit {
     public title: string = "Kindly select the recorded video";
 
     is_video_submitted: boolean = false;
+
     private file_and_titleHandler(file: File, title: string) {
         this.selected_video = file;
         this.title = title;
@@ -44,7 +42,6 @@ export class VideoUploaderComponent implements OnInit {
                 this.file_and_titleHandler(e.target.result, "File selected successfully");
                 let _file: File = $event.target.files[0];
                 if (_file.name.indexOf("mp4") === -1) {
-                    console.log(_file.name.indexOf("mp4"));
                     this.file_and_titleHandler(null, "Video can only be a mp4 file!");
                 }
             }
@@ -67,7 +64,6 @@ export class VideoUploaderComponent implements OnInit {
                 console.log(err);
                 this.loading = false;
                 window.alert(err.message);
-                // window.location.reload();
             }
         );
     }
@@ -82,7 +78,6 @@ export class VideoUploaderComponent implements OnInit {
             return false;
         } else if (this.selected_video.indexOf("mp4") === -1) {
             window.alert('Kindly select a mp4 video only');
-            window.location.reload();
             return false;
         }
         return true;
