@@ -1,0 +1,10 @@
+<div class="p-5 d-flex bg-white flex-column align-items-center justify-content-center shadow mb-3">
+    <p class="lead"><strong class="pr-2">Hi, {{username}} - </strong> {{myQuestion.question}}</p>
+    <img height="70px" width="70px" src="/assets/success.svg" class="img-fluid m-5 pointer" *ngIf="is_video_submitted" />
+    <div class="row" *ngIf="!is_video_submitted">
+        <input (change)="onFileSelected($event)" class="border w-100 rounded-lg p-3 pointer" required type="file" id="file">
+        <button (click)="upload_selected_video()" class="btn btn-block btn-primary border-0 rounded-0 mt-3" [disabled]="loading">
+      {{loading ? "Loading..." : title}}
+    </button>
+    </div>
+</div>

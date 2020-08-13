@@ -15,7 +15,7 @@ export class DataService {
     });
 
     private _resume_API_URL = "https://bitgrit-resume-api.herokuapp.com/api";
-    private _video_API_URL = 'https://a16cf2d51e69.ngrok.io';
+    private _video_API_URL = 'https://0b76206aa00f.ngrok.io';
 
     public upload_resume(data): Observable<any> {
         return this.http.post<any>(this._resume_API_URL, data, { headers: this.headers });

@@ -13,18 +13,17 @@ declare var MediaRecorder: any;
 export class VideoRecorderComponent implements OnInit {
 
     constructor(private _backend: DataService) { }
-
     @Input() job_name: string = "";
     @Input() question: Observable<Question>;
-    @Input() username:string = 'No username';
-
+    @Input() username: string = 'No username';
     public myQuestion: Question;
 
     public video_contraints = { "video": { width: { max: 320 } }, "audio": true };
     public videoStream: MediaStream;
     public videoRecorder;
     public videoRecordedChunks = [];
-    loading: boolean = false;
+
+    public loading: boolean = false;
     public is_video_playing: boolean = false;
     public is_video_submitted: boolean = false;
 
@@ -65,24 +64,32 @@ export class VideoRecorderComponent implements OnInit {
         this.videoStream.getTracks().forEach(track => track.stop());
     }
 
-    download() {
+    upload() {
+        this.username.trim();
+        if (this.username == 'your Name?' || !this.username) {
+            window.alert('Invalid Username. Kindly enter your name');
+            return;
+        }
         this.loading = true;
         if (this.videoRecorder.state == 'recording') this.stop();
         var video = new Blob(this.videoRecordedChunks, { type: "video/mp4" });
         // var video_url = URL.createObjectURL(video);
         let formData = new FormData();
         formData.append("file", video, "video.mp4");
-        formData.append("username",this.username);
-        formData.append("question_no",'1');
+        formData.append("username", this.username);
+        formData.append("question_no", '1');
         this._backend.upload_video(formData).subscribe(res => {
             window.alert('video uploaded Successfully');
             this.loading = false;
-        }, err => { console.error(err); this.loading = false; });
-        // this.download_local(video_url, 'mp4');
-        this.is_video_submitted = true;
+            this.is_video_submitted = true;
+        }, err => {
+            console.error(err); this.loading = false;
+            window.alert(err.message);
+            window.location.reload();
+        });
     }
 
-    private download_local(url, extension) {
+    private download_local(url, extension) { // not used anywhere!
         var a = window.document.createElement("a");
         document.body.appendChild(a);
         a.href = url;
@@ -92,6 +99,7 @@ export class VideoRecorderComponent implements OnInit {
     }
 
     reset() {
+        // to reinit the state of the component when new question is subscribed to!
         this.is_video_playing = false;
         this.is_video_submitted = false;
         this.videoRecordedChunks = [];
