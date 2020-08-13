@@ -85,7 +85,7 @@ export class VideoRecorderComponent implements OnInit {
         }, err => {
             console.error(err); this.loading = false;
             window.alert(err.message);
-            window.location.reload();
+            // window.location.reload();
         });
     }
 

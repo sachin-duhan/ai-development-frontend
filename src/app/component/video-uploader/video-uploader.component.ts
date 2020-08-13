@@ -67,7 +67,7 @@ export class VideoUploaderComponent implements OnInit {
                 console.log(err);
                 this.loading = false;
                 window.alert(err.message);
-                window.location.reload();
+                // window.location.reload();
             }
         );
     }
